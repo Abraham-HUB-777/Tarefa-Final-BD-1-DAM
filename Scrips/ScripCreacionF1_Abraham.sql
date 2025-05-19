@@ -123,7 +123,7 @@ CREATE TABLE Qualy (
 
 CREATE TABLE ResultadoGranPremio (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  idGranPremo INT,
+  idGranPremio INT,
   idPiloto INT,
   idEquipo INT,
   posicion INT,
@@ -133,7 +133,7 @@ CREATE TABLE ResultadoGranPremio (
   obtuvo_punto_vuelta_rapida BOOLEAN,
   paradas_box INT,
   estado_final VARCHAR(100),
-  CONSTRAINT fk_resultado_gp FOREIGN KEY (idGranPremo) REFERENCES GranPremio(id),
+  CONSTRAINT fk_resultado_gp FOREIGN KEY (idGranPremio) REFERENCES GranPremio(id),
   CONSTRAINT fk_resultado_piloto FOREIGN KEY (idPiloto) REFERENCES Piloto(id),
   CONSTRAINT fk_resultado_equipo FOREIGN KEY (idEquipo) REFERENCES Equipo(id)
 );
@@ -147,12 +147,15 @@ CREATE TABLE NeumaticoUsado (
 );
 
 CREATE TABLE Penalizacion (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  idResultadoGP INT,
-  tipo_penalizacion VARCHAR(100),
-  descripcion TEXT,
-  tiempo_penalizado TIME,
-  vuelta_ocurrida INT,
-  CONSTRAINT fk_penalizacion_resultado FOREIGN KEY (idResultadoGP) REFERENCES ResultadoGranPremio(id)
+    id INT PRIMARY KEY,
+    idGranPremio INT NOT NULL,
+    idPiloto INT NOT NULL,
+    tipo_penalizacion VARCHAR(50) NOT NULL,
+    tiempo_penalizacion INT NULL,
+    descripcion VARCHAR(255) NOT NULL,
+    vuelta INT NOT NULL,
+    FOREIGN KEY (idGranPremio) REFERENCES GranPremio(id),
+    FOREIGN KEY (idPiloto) REFERENCES Piloto(id)
 );
+
 

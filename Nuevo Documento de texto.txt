@@ -1,0 +1,59 @@
+Piloto
+id,nombre,abr,edad,nacionalidad
+
+equipo
+id,nombre,pais
+
+Temporada
+id, año, IdcampeónPiloto, campeonEquipo
+
+Coche-Temporada 
+id,Nombre,motor,idEquipo,IDtemporada
+
+piloto_equipo_sesion
+id,idTemporada,IDpiloto,IDequipo,IdCohe,NumeroCoche
+
+
+________________________________________________
+
+
+GranPremio
+id,nombreGranPremio, IDTEmporada, IDcircuito, data,
+
+circuito
+id, nombre,localizacion,pais,km
+
+Resultado
+id, IDGranPremio,idPiloto,idEquipo,posicion,puntos
+
+Qualy
+id, IdGranPremio, Idpiloto,IDequipo,q1,q2,q3,position
+
+Clasificación _Temporada
+id,idTEmporada,idPiloto,posicion,PuntostOTALES
+
+
+_________________________________________________________
+
+Piloto(id, nombre, abreviatura, edad, nacionalidad, altura, peso, fecha_nacimiento, numero_licencia, foto_url);
+
+Equipo(id, nombre, pais, color, sede_principal, director_equipo, año_fundacion, logo_url); 
+
+Temporada(id, año, idPilotoGANADOR, idEquipoGANADOR); 
+
+CocheTemporada(id, nombre, motor, idEquipo, idTemporada, especificaciones_tecnicas, peso_coche, potencia); 
+
+PilotoTemporadaEquipo(id, idTemporada, idPiloto, idEquipo, idCocheTemporada, numeroCoche); 
+
+GranPremio(id, nombreGranPremio, idTemporada, idCircuito, fecha, clima, hora_inicio, vueltas_completadas, estado); 
+
+Circuito(id, nombre, localizacion, pais, kilometros, numero_vueltas, record_vuelta, tipo_circuito, longitud_pit_lane); 
+
+ClasificacionPiloto(id, IdTemporada, idPiloto, posicion, puntos); 
+
+ClasificacionEquipo(id, idTemporada, idEquipo, posicion, puntos); 
+
+Qualy(id, idGranPremio, idPiloto, idEquipo, q1, q2, q3, posicion, tipo_clasificacion, condicion_pista); 
+
+ResultadoGranPremio(id, idGranPremo, idPiloto, IdEquipo, posicion, tiempo_total, mejor_vuelta, paradas_box, estado_final);
+
