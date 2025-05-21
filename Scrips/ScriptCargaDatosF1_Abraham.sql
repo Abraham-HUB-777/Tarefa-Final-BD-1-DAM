@@ -1,3 +1,21 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
+TRUNCATE TABLE ResultadoGranPremio;
+TRUNCATE TABLE Qualy;
+TRUNCATE TABLE ClasificacionEquipo;
+TRUNCATE TABLE ClasificacionPiloto;
+TRUNCATE TABLE GranPremio;
+TRUNCATE TABLE Circuito;
+TRUNCATE TABLE PilotoTemporadaEquipo;
+TRUNCATE TABLE CocheTemporada;
+TRUNCATE TABLE Temporada;
+TRUNCATE TABLE Equipo;
+TRUNCATE TABLE Piloto;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
+
+
 -- Equipos
 INSERT INTO Equipo (id, nombre, pais, color, sede_principal, director_equipo, año_fundacion, logo_url) VALUES
 (1, 'Red Bull Racing', 'Austria', 'Azul', 'Milton Keynes', 'Christian Horner', 2005, 'https://logo.url/redbull.png'),
