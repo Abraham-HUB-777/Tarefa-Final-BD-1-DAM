@@ -75,5 +75,49 @@ JOIN Equipo e ON e.id = c.idEquipo
 WHERE c.idTemporada = 1
 ORDER BY c.potencia DESC;
 
+-- Promedio de paradas por piloto
+SELECT 
+  p.nombre AS piloto,
+  ROUND(AVG(r.paradas_box), 2) AS promedio_paradas
+FROM ResultadoGranPremio r
+JOIN Piloto p ON p.id = r.idPiloto
+JOIN GranPremio g ON g.id = r.idGranPremio
+WHERE g.idTemporada = 1
+GROUP BY p.id
+ORDER BY promedio_paradas ASC;
+
+-- piloto con mas polePosition
+SELECT 
+  p.nombre AS piloto,
+  COUNT(*) AS pole_positions
+FROM Qualy q
+JOIN Piloto p ON p.id = q.idPiloto
+JOIN GranPremio g ON g.id = q.idGranPremio
+WHERE q.posicion = 1 AND g.idTemporada = 1
+GROUP BY p.id
+ORDER BY pole_positions DESC;
+ 
+ -- Numero de carreras por pais
+ SELECT 
+  c.pais,
+  COUNT(*) AS grandes_premios
+FROM GranPremio gp
+JOIN Circuito c ON c.id = gp.idCircuito
+WHERE gp.idTemporada = 1
+GROUP BY c.pais
+ORDER BY grandes_premios DESC;
+
+-- promedio de posicion por pilotos
+
+SELECT 
+  p.nombre AS piloto,
+  ROUND(AVG(r.posicion), 2) AS promedio_posicion
+FROM ResultadoGranPremio r
+JOIN Piloto p ON p.id = r.idPiloto
+JOIN GranPremio g ON g.id = r.idGranPremio
+WHERE g.idTemporada = 1
+GROUP BY p.id
+ORDER BY promedio_posicion ASC;
+
 
 
